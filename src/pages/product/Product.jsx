@@ -2,6 +2,7 @@ import React from 'react';
 import TableProduct from './TableProduct';
 import AddProduct from './AddProduct';
 
+
 const Product = () => {
     return (
         <div id="manage_product_section" className="manage_product_section main_section">
