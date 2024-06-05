@@ -9,7 +9,7 @@ const Content = () => {
     const {showSidebar} = useContext(AdminContext)
 
     return (
-        <section id="content_section" class={`bg-light py-2 px-3 ${showSidebar ? "with_sidebar" : null}`}>
+        <section id="content_section" className={`bg-light py-2 px-3 ${showSidebar ? "with_sidebar" : null}`}>
            {/* <Dashboard/> */}
            {/* <Category/> */}
            <Product/>
