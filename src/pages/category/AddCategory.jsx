@@ -3,7 +3,12 @@ import ModalContainers from '../../components/ModalsContainers';
 
 const AddCategory = () => {
     return (
-        <ModalContainers
+        <>
+            <button className="btn btn-success d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#add_product_category_modal">
+                <i className="fas fa-plus text-light"></i>
+            </button>
+
+         <ModalContainers
         fullScreen={true}
         id="add_product_category_modal"
         title="افزودن دسته محصولات"
@@ -52,6 +57,8 @@ const AddCategory = () => {
             </div>
             
         </ModalContainers>
+        </>
+       
     );
 }
 
