@@ -183,6 +183,10 @@ a{
 .colorBlack{
     background: #000;
 }
+.disable{
+    pointer-events: none;
+    opacity: 0.5;
+}
 
 @media(max-width:768px){
     .top_navbar .right_content{
