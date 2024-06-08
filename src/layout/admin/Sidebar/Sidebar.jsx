@@ -20,9 +20,9 @@ const Sidebar = () => {
 
                 <SidebarItem targetPath="/categories" icon="fas fa-stream" title="مدیریت گروه محصول"/>
                 <SidebarItem targetPath="/products" icon="fas fa-cube" title="مدیریت محصول"/>
-                <SidebarItem targetPath="/test" icon="fas fa-copyright" title="مدیریت برند ها"/>
+                <SidebarItem targetPath="/" icon="fas fa-copyright" title="مدیریت برند ها"/>
                 <SidebarItem targetPath="/test" icon="fab fa-pagelines" title="مدیریت گارانتی ها"/>
-                <SidebarItem targetPath="/test" icon="fas fa-palette" title="مدیریت رنگ ها"/>
+                <SidebarItem targetPath="/colors" icon="fas fa-palette" title="مدیریت رنگ ها"/>
                 <SidebarItem targetPath="/test" icon="fas fa-percentage" title="مدیریت تخفیف ها"/>
                 
                 <GroupTitle title="سفارشات و سبد"/>

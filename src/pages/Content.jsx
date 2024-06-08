@@ -4,6 +4,8 @@ import Dashboard from './dashboard/Dashboard';
 import { AdminContext } from '../context/AdminContext';
 import Product from './product/Product';
 import { Route, Routes } from 'react-router-dom';
+import Colors from './colors/Colors';
+
 
 const Content = () => {
     
@@ -15,6 +17,7 @@ const Content = () => {
                 <Route path='/' element={<Dashboard/>}/>
                 <Route path='/categories' element={<Category/>}/>
                 <Route path='/products' element={<Product/>}/>
+                <Route path='/colors' element={<Colors/>}/>
            
                 <Route path='*' element={<Dashboard/>}/>
            </Routes>

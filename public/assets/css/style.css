@@ -187,7 +187,9 @@ a{
     pointer-events: none;
     opacity: 0.5;
 }
-
+.colorc{
+    background: #f44336
+}
 @media(max-width:768px){
     .top_navbar .right_content{
         background-color: #6c757d  !important;
