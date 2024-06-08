@@ -83,7 +83,7 @@ const CategoryTable = () => {
 
     return (
         <>  
-        <PaginatedTable data={data} dataInfo={dataInfo} additionalField={additionalField} searchParams={searchParams} numOfPage={4}>
+        <PaginatedTable data={data} dataInfo={dataInfo} additionalField={additionalField} searchParams={searchParams} numOfPage={3}>
             <AddCategory/>
         </PaginatedTable>
             {/* <table className="table table-responsive text-center table-hover table-bordered">

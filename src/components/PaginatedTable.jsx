@@ -73,7 +73,7 @@ const PaginatedTable = ({children, data , dataInfo , additionalField , numOfPage
                     ))}
                 </tbody>
             </table>
-            {pages.length > 1 ? (
+            {pages.length ? (
                 <nav aria-label="Page navigation example" className="d-flex justify-content-center">
                     <ul className="pagination dir_ltr">
                       <li className="page-item">
@@ -92,7 +92,9 @@ const PaginatedTable = ({children, data , dataInfo , additionalField , numOfPage
                       </li>
                     </ul>
                   </nav> 
-            ) : null}
+            ) : (
+              <h5 className='text-center text-danger'>موردی یافت نشد...</h5>
+            )}
             
        </>
     );
