@@ -5,6 +5,7 @@ import { AdminContext } from '../context/AdminContext';
 import Product from './product/Product';
 import { Route, Routes } from 'react-router-dom';
 import Colors from './colors/Colors';
+import Guarantee from './guarantee/Guarantee';
 
 
 const Content = () => {
@@ -18,6 +19,7 @@ const Content = () => {
                 <Route path='/categories' element={<Category/>}/>
                 <Route path='/products' element={<Product/>}/>
                 <Route path='/colors' element={<Colors/>}/>
+                <Route path='/guarantee' element={<Guarantee/>}/>
            
                 <Route path='*' element={<Dashboard/>}/>
            </Routes>
