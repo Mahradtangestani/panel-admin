@@ -6,6 +6,7 @@ import Product from './product/Product';
 import { Route, Routes } from 'react-router-dom';
 import Colors from './colors/Colors';
 import Guarantee from './guarantee/Guarantee';
+import Brands from './brands/Brands';
 
 
 const Content = () => {
@@ -20,6 +21,7 @@ const Content = () => {
                 <Route path='/products' element={<Product/>}/>
                 <Route path='/colors' element={<Colors/>}/>
                 <Route path='/guarantee' element={<Guarantee/>}/>
+                <Route path='/brands' element={<Brands/>}/>
            
                 <Route path='*' element={<Dashboard/>}/>
            </Routes>
