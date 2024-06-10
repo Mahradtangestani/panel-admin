@@ -21,7 +21,7 @@ const TableDiscount = () => {
                         <td>تخفیف شماره 1</td>
                         <td>takhfif1</td>
                         <td>39%</td>
-                        <td>1400/10/12</td>
+                        <td>1402/10/12</td>
                         <td>همه</td>
                         <td>
                             <i className="fas fa-edit text-warning mx-1 hoverable_text pointer has_tooltip" title="ویرایش کد" data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#add_discount_modal"></i>

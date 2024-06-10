@@ -10,6 +10,7 @@ import Brands from './brands/Brands';
 import Discount from './discount/Discount';
 import Cart from './cart/Cart';
 import Questions from './questions/Questions';
+import Comment from './comment/Comment';
 
 
 const Content = () => {
@@ -27,8 +28,9 @@ const Content = () => {
                 <Route path='/brands' element={<Brands/>}/>
                 <Route path='/discount' element={<Discount/>}/>
                 <Route path='/cart' element={<Cart/>}/>
-                
+
                 <Route path='/questions' element={<Questions/>}/>
+                <Route path='/comment' element={<Comment/>}/>
            
                 <Route path='*' element={<Dashboard/>}/>
            </Routes>

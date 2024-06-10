@@ -40,7 +40,7 @@ const Sidebar = () => {
                 <GroupTitle title="ارتباطات"/>
                 
                 <SidebarItem targetPath="/questions" icon="fas fa-question-circle" title="سوال ها "/>
-                <SidebarItem targetPath="/test" icon="fas fa-comment" title=" نظرات "/>
+                <SidebarItem targetPath="/comment" icon="fas fa-comment" title=" نظرات "/>
             </div>
         </div>
     </section>

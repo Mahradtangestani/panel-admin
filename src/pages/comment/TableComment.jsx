@@ -1,15 +1,15 @@
 import React from 'react';
 
-const TableQuestions = () => {
+const TableComment = () => {
     return (
         <>
-        <table className="table table-responsive text-center table-hover table-bordered">
+            <table className="table table-responsive text-center table-hover table-bordered">
             <thead className="table-secondary">
                 <tr>
                     <th>#</th>
                     <th>نام و نام خانوادگی</th>
-                    <th>نوع سوال</th>
-                    <th>دسته</th>
+                    <th>نوع نظر</th>
+                    <th>برای</th>
                     <th>قسمتی از متن</th>
                     <th>وضعیت</th>
                     <th>تاریخ</th>
@@ -20,9 +20,9 @@ const TableQuestions = () => {
                 <tr>
                     <td>1</td>
                     <td>قاسم بساکی</td>
-                    <td>پرسش</td>
-                    <td>محصولات</td>
-                    <td>قسمتی از متن سوال برای این محصول مثلا 100 کارکتر</td>
+                    <td>نظر</td>
+                    <td>محصول فلان</td>
+                    <td>قسمتی از متن نظر برای این محصول مثلا 100 کارکتر</td>
                     <td>
                         <div className="form-check form-switch d-flex justify-content-center align-items-center p-0 h-100">
                             <label className="form-check-label pointer" htmlFor="flexSwitchCheckDefault">فعال</label>
@@ -31,7 +31,7 @@ const TableQuestions = () => {
                     </td>
                     <td>1402/10/12</td>
                     <td>
-                        <i className="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="حذف سوال" data-bs-toggle="tooltip" data-bs-placement="top"></i>
+                        <i className="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="حذف نظر" data-bs-toggle="tooltip" data-bs-placement="top"></i>
                     </td>
                 </tr>
             </tbody>
@@ -52,9 +52,9 @@ const TableQuestions = () => {
                 </a>
                 </li>
             </ul>
-            </nav>
+        </nav>
         </>
     );
 }
 
-export default TableQuestions;
+export default TableComment;
