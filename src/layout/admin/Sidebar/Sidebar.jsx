@@ -27,7 +27,7 @@ const Sidebar = () => {
                 
                 <GroupTitle title="سفارشات و سبد"/>
 
-                <SidebarItem targetPath="/test" icon="fas fa-shopping-basket" title="مدیریت سبد ها"/>
+                <SidebarItem targetPath="/cart" icon="fas fa-shopping-basket" title="مدیریت سبد ها"/>
                 <SidebarItem targetPath="/test" icon="fas fa-luggage-cart" title="مدیریت سفارشات "/>
                 <SidebarItem targetPath="/test" icon="fas fa-truck-loading" title="مدیریت نحوه ارسال "/>
 
