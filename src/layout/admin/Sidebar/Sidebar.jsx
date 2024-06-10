@@ -39,7 +39,7 @@ const Sidebar = () => {
 
                 <GroupTitle title="ارتباطات"/>
                 
-                <SidebarItem targetPath="/text" icon="fas fa-question-circle" title="سوال ها "/>
+                <SidebarItem targetPath="/questions" icon="fas fa-question-circle" title="سوال ها "/>
                 <SidebarItem targetPath="/test" icon="fas fa-comment" title=" نظرات "/>
             </div>
         </div>
