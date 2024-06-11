@@ -11,6 +11,8 @@ import Discount from './discount/Discount';
 import Cart from './cart/Cart';
 import Questions from './questions/Questions';
 import Comment from './comment/Comment';
+import Permissions from './permissions/Permissions';
+import Role from './role/Role';
 
 
 const Content = () => {
@@ -29,6 +31,8 @@ const Content = () => {
                 <Route path='/discount' element={<Discount/>}/>
                 <Route path='/cart' element={<Cart/>}/>
 
+                <Route path='/role' element={<Role/>}/>
+                <Route path='/permissions' element={<Permissions/>}/>
                 <Route path='/questions' element={<Questions/>}/>
                 <Route path='/comment' element={<Comment/>}/>
            

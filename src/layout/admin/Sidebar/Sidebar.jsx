@@ -34,8 +34,8 @@ const Sidebar = () => {
                 <GroupTitle title="کاربران و همکاران"/>
                 
                 <SidebarItem targetPath="/test" icon="fas fa-users" title="مشاهده کاربران "/>
-                <SidebarItem targetPath="/test" icon="fas fa-user-tag" title=" نقش ها "/>
-                <SidebarItem targetPath="/test" icon="fas fa-shield-alt" title=" مجوز ها "/>
+                <SidebarItem targetPath="/role" icon="fas fa-user-tag" title=" نقش ها "/>
+                <SidebarItem targetPath="/permissions" icon="fas fa-shield-alt" title=" مجوز ها "/>
 
                 <GroupTitle title="ارتباطات"/>
                 
