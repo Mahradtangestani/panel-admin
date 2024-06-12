@@ -9,7 +9,7 @@ const AddCart = () => {
                 </button>
 
         <ModalContainers 
-        fullScreen={false}
+        fullScreen={true}
         title="جزیات سبد خرید"
         id="edit_cart_modal"
         >

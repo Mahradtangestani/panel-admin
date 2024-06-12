@@ -1,6 +1,6 @@
 import React from 'react';
 
-const TableCart = () => {
+const TableManageOrders = () => {
     return (
         <>
                     <table className="table table-responsive text-center table-hover table-bordered">
@@ -9,9 +9,9 @@ const TableCart = () => {
                         <th>#</th>
                         <th>آی دی مشتری</th>
                         <th>نام مشتری</th>
-                        <th>تاریخ</th>
-                        <th>مبلغ کل سبد</th>
                         <th>وضعیت</th>
+                        <th>تاریخ پرداخت</th>
+                        <th>مبلغ پرداختی</th>
                         <th>عملیات</th>
                     </tr>
                 </thead>
@@ -20,12 +20,12 @@ const TableCart = () => {
                         <td>1</td>
                         <td>50</td>
                         <td>مهراد تنگستانی</td>
+                        <td>پرداخت شده</td>
                         <td>1402/07/15</td>
                         <td>100هزار تومان</td>
-                        <td>فعال</td>
                         <td>
-                            <i className="fas fa-edit text-warning mx-1 hoverable_text pointer has_tooltip" title="ویرایش و جزئیات سبد" data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#edit_cart_modal"></i>
-                            <i className="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="حذف سبد" data-bs-toggle="tooltip" data-bs-placement="top"></i>
+                            <i className="fas fa-shopping-cart text-info mx-1 hoverable_text pointer has_tooltip" title="  جزئیات سفارش" data-bs-toggle="modal" data-bs-placement="top" data-bs-target="#order_details_modal"></i>
+                            <i className="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="حذف سفارش" data-bs-toggle="tooltip" data-bs-placement="top"></i>
                         </td>
                     </tr>
                 </tbody>
@@ -51,4 +51,4 @@ const TableCart = () => {
     );
 }
 
-export default TableCart;
+export default TableManageOrders;

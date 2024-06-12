@@ -15,6 +15,7 @@ import Permissions from './permissions/Permissions';
 import Role from './role/Role';
 import UserView from './userview/UserView';
 import ManageDelivery from './managedelivery/ManageDelivery';
+import ManageOrders from './manageorders/ManageOrders';
 
 
 const Content = () => {
@@ -33,6 +34,7 @@ const Content = () => {
                 <Route path='/discount' element={<Discount/>}/>
                 <Route path='/cart' element={<Cart/>}/>
 
+                <Route path='/manageorders' element={<ManageOrders/>}/>
                 <Route path='/managedelivery' element={<ManageDelivery/>}/>
                 <Route path='/userview' element={<UserView/>}/>
                 <Route path='/role' element={<Role/>}/>
