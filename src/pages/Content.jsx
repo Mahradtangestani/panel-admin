@@ -13,6 +13,7 @@ import Questions from './questions/Questions';
 import Comment from './comment/Comment';
 import Permissions from './permissions/Permissions';
 import Role from './role/Role';
+import UserView from './userview/UserView';
 
 
 const Content = () => {
@@ -31,6 +32,7 @@ const Content = () => {
                 <Route path='/discount' element={<Discount/>}/>
                 <Route path='/cart' element={<Cart/>}/>
 
+                <Route path='/userview' element={<UserView/>}/>
                 <Route path='/role' element={<Role/>}/>
                 <Route path='/permissions' element={<Permissions/>}/>
                 <Route path='/questions' element={<Questions/>}/>
