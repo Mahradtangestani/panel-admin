@@ -29,7 +29,7 @@ const Sidebar = () => {
 
                 <SidebarItem targetPath="/cart" icon="fas fa-shopping-basket" title="مدیریت سبد ها"/>
                 <SidebarItem targetPath="/test" icon="fas fa-luggage-cart" title="مدیریت سفارشات "/>
-                <SidebarItem targetPath="/test" icon="fas fa-truck-loading" title="مدیریت نحوه ارسال "/>
+                <SidebarItem targetPath="/managedelivery" icon="fas fa-truck-loading" title="مدیریت نحوه ارسال "/>
 
                 <GroupTitle title="کاربران و همکاران"/>
                 
