@@ -4,6 +4,11 @@ import ModalContainers from '../../components/ModalsContainers';
 
 const AddProduct = () => {
     return (
+        <>
+        <button className="btn btn-success d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#add_product_modal">
+                        <i className="fas fa-plus text-light"></i>
+        </button>
+
         <ModalContainers
         fullScreen={true}
         id="add_product_modal"
@@ -149,6 +154,7 @@ const AddProduct = () => {
             </div>
             
         </ModalContainers>
+        </>
     );
 }
 

@@ -2,8 +2,8 @@ import React from 'react';
 
 const DashboardTable = () => {
     return (
-        <table class="table table-responsive text-center table-hover table-bordered no_shadow_back_table font_08">
-                    <thead class="table-secondary">
+        <table className="table table-responsive text-center table-hover table-bordered no_shadow_back_table font_08">
+                    <thead className="table-secondary">
                         <tr>
                             <th>#</th>
                             <th>دسته</th>
@@ -19,7 +19,7 @@ const DashboardTable = () => {
                             <td>محصول فلان</td>
                             <td>پایان یافته</td>
                             <td>
-                                <i class="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="نادیده گرفتن" data-bs-toggle="tooltip" data-bs-placement="top"></i>
+                                <i className="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="نادیده گرفتن" data-bs-toggle="tooltip" data-bs-placement="top"></i>
                             </td>
                         </tr>
                         <tr>
@@ -28,7 +28,7 @@ const DashboardTable = () => {
                             <td>محصول فلان</td>
                             <td>رو به اتمام - 4</td>
                             <td>
-                                <i class="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="نادیده گرفتن" data-bs-toggle="tooltip" data-bs-placement="top"></i>
+                                <i className="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="نادیده گرفتن" data-bs-toggle="tooltip" data-bs-placement="top"></i>
                             </td>
                         </tr>
                         <tr>
@@ -37,7 +37,7 @@ const DashboardTable = () => {
                             <td>محصول فلان</td>
                             <td>پایان یافته</td>
                             <td>
-                                <i class="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="نادیده گرفتن" data-bs-toggle="tooltip" data-bs-placement="top"></i>
+                                <i className="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="نادیده گرفتن" data-bs-toggle="tooltip" data-bs-placement="top"></i>
                             </td>
                         </tr>
                         <tr>
@@ -46,7 +46,7 @@ const DashboardTable = () => {
                             <td>محصول فلان</td>
                             <td>پایان یافته</td>
                             <td>
-                                <i class="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="نادیده گرفتن" data-bs-toggle="tooltip" data-bs-placement="top"></i>
+                                <i className="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="نادیده گرفتن" data-bs-toggle="tooltip" data-bs-placement="top"></i>
                             </td>
                         </tr>
                         <tr>
@@ -55,7 +55,7 @@ const DashboardTable = () => {
                             <td>محصول فلان</td>
                             <td>رو به اتمام - 2</td>
                             <td>
-                                <i class="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="نادیده گرفتن" data-bs-toggle="tooltip" data-bs-placement="top"></i>
+                                <i className="fas fa-times text-danger mx-1 hoverable_text pointer has_tooltip" title="نادیده گرفتن" data-bs-toggle="tooltip" data-bs-placement="top"></i>
                             </td>
                         </tr>
 

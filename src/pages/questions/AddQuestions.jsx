@@ -18,9 +18,9 @@ const AddQuestions = () => {
             <div className="container">
                     <div className="row justify-content-center">
                         <div className="form-check form-switch d-flex justify-content-center align-items-center p-0 h-100">
-                            <label className="form-check-label pointer" for="flexSwitchCheckDefault">سوال</label>
+                            <label className="form-check-label pointer" htmlFor="flexSwitchCheckDefault">سوال</label>
                             <input className="form-check-input pointer mx-3" type="checkbox" id="flexSwitchCheckDefault"/>
-                            <label className="form-check-label pointer" for="flexSwitchCheckDefault">پاسخ</label>
+                            <label className="form-check-label pointer" htmlFor="flexSwitchCheckDefault">پاسخ</label>
                         </div> 
                         <div className="col-12">
                             <div className="input-group dir_ltr">

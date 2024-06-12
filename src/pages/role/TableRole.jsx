@@ -21,7 +21,7 @@ const TableRole = () => {
                         <td>
                             <div className="form-check form-switch d-flex justify-content-center align-items-center p-0 h-100">
                                 <label className="form-check-label pointer" htmlFor="flexSwitchCheckDefault">فعال</label>
-                                <input className="form-check-input pointer mx-3" type="checkbox" id="flexSwitchCheckDefault" checked/>
+                                <input className="form-check-input pointer mx-3" type="checkbox" id="flexSwitchCheckDefault"/>
                             </div> 
                         </td>
                         <td>

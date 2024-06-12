@@ -1,6 +1,7 @@
 import React from 'react';
 import TableManageOrders from './TableManageOrders';
 import AddManageOrders from './AddManageOrders';
+import ManageOrdersDetails from './ManageOrdersDetails';
 
 const ManageOrders = () => {
     return (
@@ -18,6 +19,7 @@ const ManageOrders = () => {
                 </div>
             </div>
             <TableManageOrders/>
+            <ManageOrdersDetails/>
         </div>
     );
 }

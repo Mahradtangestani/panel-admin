@@ -51,8 +51,8 @@ const AddRole = () => {
 
                         <div className="col-12 my-2">
                             <div className="form-check form-switch col-5 col-md-4">
-                                <input className="form-check-input pointer" type="checkbox" id="flexSwitchCheckDefault" checked/>
-                                <label className="form-check-label pointer" for="flexSwitchCheckDefault">وضعیت : فعال</label>
+                                <input className="form-check-input pointer" type="checkbox" id="flexSwitchCheckDefault"/>
+                                <label className="form-check-label pointer" htmlFor="flexSwitchCheckDefault">وضعیت : فعال</label>
                             </div>
                         </div>
 

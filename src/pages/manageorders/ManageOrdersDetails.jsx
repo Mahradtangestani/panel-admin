@@ -1,62 +1,50 @@
 import React from 'react';
 import ModalContainers from '../../components/ModalsContainers';
 
-const AddManageOrders = () => {
+const ManageOrdersDetails = () => {
     return (
-        <>
-        <button className="btn btn-success d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#add_order_modal">
-            <i className="fas fa-plus text-light"></i>
-        </button>
-
-        <ModalContainers 
-        id="add_order_modal"
-        title="افزودن سفارش"
+        <ModalContainers
+        id="order_details_modal"
+        title="جزیات سفارش"
         fullScreen={true}
         >
-        <div className="container">
+
+         <div className="container">
                     <div className="row my-1 justify-content-center">
                         <div className="col-12 col-md-4 col-lg-2 my-1">
-                            <input type="text" className="form-control" list="cart_list_select" placeholder="انتخاب سبد"/>
-                            <datalist id="cart_list_select">
-                                <option value="46 - سبد شماره 1"/>
-                                <option value="58 - سبد شماره 2"/>
-                            </datalist>
+                            <input type="text" className="form-control" value="مهراد تنگستانی" disabled/>
                         </div>
                         <div className="col-12 col-md-4 col-lg-2 my-1">
-                            <input type="text" className="form-control" placeholder="تاریخ پرداخت"/>
+                            <input type="text" className="form-control" value="تاریخ پرداخت" disabled/>
                         </div>
                         <div className="col-12 col-md-4 col-lg-2 my-1">
-                            <input type="text" className="form-control" value="پرداخت : 500,000 تومان" disabled/>
+                            <input type="text" className="form-control" value="مبلغ پرداختی" disabled/>
                         </div>
                         <div className="col-12 col-md-4 col-lg-2 my-1">
-                            <input type="text" className="form-control" value="تخفیف : 5,000 تومان" disabled/>
+                            <input type="text" className="form-control" value="مبلغ تخفیف" disabled/>
                         </div>
                         <div className="col-12 col-md-4 col-lg-2 my-1">
-                            <input type="text" className="form-control" placeholder="کد تخفیف" />
+                            <input type="text" className="form-control" value="کد تخفیف" disabled/>
                         </div>
                         <div className="col-12"></div>
                         <div className="col-12 col-md-10 my-1">
-                            <input type="text" className="form-control" placeholder="آدرس کامل"/>
+                            <input type="text" className="form-control" value="آدرس کامل" disabled/>
                         </div>
                         <div className="col-12"></div>
                         <div className="col-12 col-md-4 col-lg-2 my-1">
-                            <select className="form-control">
-                                <option value="">نوع ارسال</option>
-                                <option value="1">پیشتاز</option>
-                                <option value="2">معمولی</option>
-                            </select> 
+                            <input type="text" className="form-control" value="نوع ارسال" disabled/>
                         </div>
                         <div className="col-12 col-md-4 col-lg-2 my-1">
-                            <input type="text" className="form-control" placeholder="تلفن"/>
+                            <input type="text" className="form-control" value="تلفن" disabled/>
                         </div>
                         <div className="col-12 col-md-4 col-lg-2 my-1">
-                            <input type="text" className="form-control" placeholder="ایمیل"/>
+                            <input type="text" className="form-control" value="ایمیل" disabled/>
                         </div>
                         <div className="col-12 col-md-4 col-lg-2 my-1">
-                            <input type="text" className="form-control" placeholder="شماره کارت"/>
+                            <input type="text" className="form-control" value="شماره کارت" disabled/>
                         </div>
                         <div className="col-12 col-md-4 col-lg-2 my-1">
-                            <input type="text" className="form-control" placeholder="نام بانک"/>
+                            <input type="text" className="form-control" value="نام بانک" disabled/>
                         </div>
 
                         <hr className="mt-3"/>
@@ -87,13 +75,9 @@ const AddManageOrders = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="btn_box text-center col-12 mt-4">
-                        <button className="btn btn-primary ">ذخیره</button>
-                    </div>    
                 </div>
         </ModalContainers>
-        </>
     );
 }
 
-export default AddManageOrders;
+export default ManageOrdersDetails;
