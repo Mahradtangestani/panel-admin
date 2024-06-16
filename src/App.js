@@ -1,10 +1,21 @@
 import React from 'react';
-import Index from './layout/admin/Index';
+import AdminLayout from './layout/admin/AdminLayout';
+import AuthLayout from './layout/auth/AuthLayout';
+import { useLocation } from 'react-router-dom';
 
 function App() {
+  const location = useLocation()
   return (
     <div>
-        <Index/>
+      {
+        location.pathname.includes("/login") ? (
+          <AuthLayout/>
+        ) : (
+        <AdminLayout/>
+        )
+      }
+        
+        
     </div>
   );
 }
