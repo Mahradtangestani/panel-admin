@@ -19,12 +19,15 @@ const onSubmit = (values , submitMethods , navigate)=>{
         console.log(res);
         if (res.status == 200){
             localStorage.setItem("loginToken" , JSON.stringify(res.data))
-            navigate("/")
-            submitMethods.setSubmitting(false)  
+            navigate("/") 
         }else{
-            submitMethods.setSubmitting(false)
+            
             Alert("متاسفم...!" , res.data.message , "error")
         }
+        submitMethods.setSubmitting(false)
+    }).catch(e=>{
+        submitMethods.setSubmitting(false)
+        Alert("متاسفم...!" , "مشکل از سمت سرور پیش آمده" , "error")
     })
 }
 const validationSchema = Yup.object({

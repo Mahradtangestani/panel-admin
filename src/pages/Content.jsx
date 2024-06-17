@@ -16,6 +16,7 @@ import Role from './role/Role';
 import UserView from './userview/UserView';
 import ManageDelivery from './managedelivery/ManageDelivery';
 import ManageOrders from './manageorders/ManageOrders';
+import Logout from './auth/Logout';
 
 
 const Content = () => {
@@ -41,6 +42,7 @@ const Content = () => {
                 <Route path='/permissions' element={<Permissions/>}/>
                 <Route path='/questions' element={<Questions/>}/>
                 <Route path='/comment' element={<Comment/>}/>
+                <Route path='/logout' element={<Logout/>}/>
            
                 <Route path='*' element={<Dashboard/>}/>
            </Routes>
