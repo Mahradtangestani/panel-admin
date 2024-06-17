@@ -3,14 +3,15 @@ import React from 'react';
 import * as Yup from 'yup';
 import AuthFormikControl from '../../components/authform/AuthFormikControl';
 import axios from 'axios';
-import { json, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Alert } from '../../utils/Alert';
 
 const initialValues ={
     phone: "",
     password: "",
     remember: false
 }
-const onSubmit = (values , navigate)=>{
+const onSubmit = (values , submitMethods , navigate)=>{
     axios.post("https://ecomadminapi.azhadev.ir/api/auth/login" , {
         ...values , 
         remember: values.remember ? 1 : 0
@@ -19,6 +20,10 @@ const onSubmit = (values , navigate)=>{
         if (res.status == 200){
             localStorage.setItem("loginToken" , JSON.stringify(res.data))
             navigate("/")
+            submitMethods.setSubmitting(false)  
+        }else{
+            submitMethods.setSubmitting(false)
+            Alert("متاسفم...!" , res.data.message , "error")
         }
     })
 }
@@ -38,7 +43,7 @@ const Login = () => {
     
         <Formik
                 initialValues={initialValues}
-                onSubmit={(values)=>onSubmit(values , navigate)}
+                onSubmit={(values , submitMethods)=>onSubmit(values , submitMethods , navigate)}
                 validationSchema={validationSchema}
                 >
                     {
@@ -79,8 +84,12 @@ const Login = () => {
                                         
                                         
                                         <div className="container-login100-form-btn">
-                                            <button className="login100-form-btn">
-                                                ورود
+                                            <button className="login100-form-btn" disabled={formik.isSubmitting}>
+                                                {formik.isSubmitting ? (
+                                                    <div class="spinner-border" role="status">
+                                                        <span class="visually-hidden">Loading...</span>
+                                                    </div>
+                                                ) : "ورود"}
                                             </button>
                                         </div>
                                     </Form>
