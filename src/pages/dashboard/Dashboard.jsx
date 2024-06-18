@@ -20,9 +20,9 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <div id="dashboard_section" class="dashboard_section main_section">
+        <div id="dashboard_section" className="dashboard_section main_section">
 
-        <div class="row">
+        <div className="row">
             <Cart
             currentValue="7"
             title="سبد خرید امروز"
@@ -64,18 +64,18 @@ const Dashboard = () => {
 
 
 
-        <div class="row">
+        <div className="row">
 
-            <div class="col-12 col-lg-6">
+            <div className="col-12 col-lg-6">
 
-                <p class="text-center mt-3 text-dark">محصولات رو به اتمام</p>
+                <p className="text-center mt-3 text-dark">محصولات رو به اتمام</p>
 
                 <ProductTable/>
 
             </div>
 
             
-            <div class="col-12 col-lg-6">
+            <div className="col-12 col-lg-6">
                 <canvas id="myChart" height="195"></canvas>
             </div>
 
