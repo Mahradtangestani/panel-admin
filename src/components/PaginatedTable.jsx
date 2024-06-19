@@ -33,7 +33,7 @@ const PaginatedTable = ({children, data , dataInfo , additionalField , numOfPage
     useEffect(()=>{
       setInitData(data.filter(d=>d[searchParams.searchField].includes(searchChar)))
       setCurrentPage(1)
-    } , [searchChar])
+    } , [searchChar , data])
 
     return (
        <>
@@ -56,7 +56,9 @@ const PaginatedTable = ({children, data , dataInfo , additionalField , numOfPage
                             <th key={i.field}>{i.title}</th>
                         ))}
                         {additionalField ? (
-                            <th>{additionalField.title}</th>
+                            additionalField.map((a , index)=>(
+                              <th key={a.id+"__"+index}>{a.title}</th>
+                            ))
                         ) : null}
                     </tr>
                 </thead>
@@ -66,8 +68,10 @@ const PaginatedTable = ({children, data , dataInfo , additionalField , numOfPage
                             {dataInfo.map(i=>(
                                 <td key={i.field+"_"+d.id}>{d[i.field]}</td>
                             ))}
-                            {additionalField ? (
-                            <th>{additionalField.elements(d.id)}</th>
+                        {additionalField ? (
+                            additionalField.map((a , index)=>(
+                              <td key={a.id+"__"+index}>{a.elements(d)}</td>
+                            ))
                         ) : null}
                         </tr>
                     ))}
