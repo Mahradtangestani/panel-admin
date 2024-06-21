@@ -27,14 +27,15 @@ const Content = () => {
         <section id="content_section" className={`bg-light py-2 px-3 ${showSidebar ? "with_sidebar" : null}`}>
             <Routes>
                 <Route path='/' element={<Dashboard/>}/>
-                <Route path='/categories' element={<Category/>}/>
+                <Route path='/categories' element={<Category/>}>
+                    <Route path=':categoryId'/>
+                </Route>
                 <Route path='/products' element={<Product/>}/>
                 <Route path='/colors' element={<Colors/>}/>
                 <Route path='/guarantee' element={<Guarantee/>}/>
                 <Route path='/brands' element={<Brands/>}/>
                 <Route path='/discount' element={<Discount/>}/>
                 <Route path='/cart' element={<Cart/>}/>
-
                 <Route path='/manageorders' element={<ManageOrders/>}/>
                 <Route path='/managedelivery' element={<ManageDelivery/>}/>
                 <Route path='/userview' element={<UserView/>}/>
