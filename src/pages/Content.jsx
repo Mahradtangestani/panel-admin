@@ -17,6 +17,7 @@ import UserView from './userview/UserView';
 import ManageDelivery from './managedelivery/ManageDelivery';
 import ManageOrders from './manageorders/ManageOrders';
 import Logout from './auth/Logout';
+import Categorychildren from './category/Categorychildren';
 
 
 const Content = () => {
@@ -28,7 +29,7 @@ const Content = () => {
             <Routes>
                 <Route path='/' element={<Dashboard/>}/>
                 <Route path='/categories' element={<Category/>}>
-                    <Route path=':categoryId'/>
+                    <Route path=':categoryId' element={<Categorychildren/>}/>
                 </Route>
                 <Route path='/products' element={<Product/>}/>
                 <Route path='/colors' element={<Colors/>}/>
