@@ -389,6 +389,10 @@ a{
 
 /* content end-------<<<<<<< */
 
+.error_message{
+    margin-top: -8px;
+}
+
 
 .text-waiting{
     position: fixed;

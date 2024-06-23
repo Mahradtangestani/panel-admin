@@ -1,7 +1,62 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ModalContainers from '../../components/ModalsContainers';
+import * as Yup from "yup"
+import { Form, Formik } from 'formik';
+import FormikControl from '../../components/form/FormikControl';
+import { getCategoryService } from '../../services/category';
+import { Alert } from '../../utils/Alert';
+
+
+const initialValues = {
+    parent_id: "",
+    title:"",
+    description:"",
+    image: null,
+    is_active: true,
+    show_in_menu: true
+
+}
+
+const onSubmit = (values , Actions)=>{
+    console.log(values);
+}
+
+
+const validationSchema = Yup.object({
+    parent_id: Yup.number(),
+    title:Yup.string().required("لطفا این قسمت را پر کنید").matches(/^[a-zA-Z0-9\u0600-\u06FF\u0660-\u0669\u06F0-\u06F9]+$/),
+    description: Yup.string().matches(/^[a-zA-Z0-9\u0600-\u06FF\u0660-\u0669\u06F0-\u06F9]+$/),
+    image:Yup.mixed().test("FileSize" , "حجم فایل نمیتواند بیشتر از 500 کیلوبایت باشد" , (value) => !value ? true : (value.size <= 500 * 1024))
+    .test("Format" , "فرمت باید JPG باشد" , (value)=> !value ? true : (value.type === "image/jpeg")),
+    is_active: Yup.boolean(),
+    show_in_menu: Yup.boolean()
+})
+
+
 
 const AddCategory = () => {
+
+    const [parents , setParents] = useState([])
+    
+    const handleGetParentsCategories = async ()=>{
+        
+        try {
+            const res = await getCategoryService() 
+            if(res.status == 200){
+                const allParents = res.data.data
+                setParents(allParents.map(p=>{
+                    return {id: p.id , value: p.title}
+                }))
+            }
+        } catch (error) {
+            Alert("مشکل!" , "دسته بندی های والد وارد نشد" , "warning")
+        }
+    }
+
+    useEffect(()=>{
+        handleGetParentsCategories()
+    } , [])
+
     return (
         <>
             <button className="btn btn-success d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#add_product_category_modal">
@@ -14,51 +69,78 @@ const AddCategory = () => {
         title="افزودن دسته محصولات"
         >
 
+            <Formik
+            initialValues={initialValues}
+            onSubmit={onSubmit}
+            validationSchema={validationSchema}
+            
+            >
+            <Form>
             <div className="container">
-                    <div className="row justify-content-center">
-                        <div className="col-12 col-md-6 col-lg-8">
-                            <div className="input-group mb-3 dir_ltr">
-                                <select type="text" className="form-control">
-                                    <option value="1">بدون والد</option>
-                                    <option value="1">دسته شماره 1</option>
-                                </select>
-                                <span className="input-group-text w_6rem justify-content-center">دسته والد</span>
-                            </div>
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-8">
-                            <div className="input-group mb-3 dir_ltr">
-                                <input type="text" className="form-control" placeholder="عنوان دسته"/>
-                                <span className="input-group-text w_6rem justify-content-center">عنوان</span>
-                            </div>
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-8">
-                            <div className="input-group mb-3 dir_ltr">
-                                <textarea type="text" className="form-control" placeholder="توضیحات" rows="5"></textarea>
-                                <span className="input-group-text w_6rem justify-content-center">توضیحات</span>
-                            </div>
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-8">
-                            <div className="input-group mb-3 dir_ltr">
-                                <input type="file" className="form-control" placeholder="تصویر"/>
-                                <span className="input-group-text w_6rem justify-content-center">تصویر</span>
-                            </div>
-                        </div>
-                        <div className="col-12 col-md-6 col-lg-8 row justify-content-center">
-                            <div className="form-check form-switch col-5 col-md-2">
-                                <input className="form-check-input pointer" type="checkbox" id="flexSwitchCheckDefault"/>
-                                <label className="form-check-label pointer" htmlFor="flexSwitchCheckDefault">وضعیت فعال</label>
-                            </div>
-                        </div>
-                        <div className="btn_box text-center col-12 col-md-6 col-lg-8 mt-4">
-                            <button className="btn btn-primary ">ذخیره</button>
-                        </div>
+                <div className="row justify-content-center">
 
+                {
+                    parents.length > 0 ? (
+                    <FormikControl
+                    className="col-md-6 col-lg-8"
+                    control="select"
+                    options={parents}
+                    name="parent_id"
+                    label="دسته والد"
+                    />
+                    ) : null
+                }
+                <FormikControl
+                    className="col-md-6 col-lg-8"
+                    control="input"
+                    type="text"
+                    name="title"
+                    label="عنوان دسته"
+                    placeholder="عنوان دسته"
+                />
+                <FormikControl
+                    className="col-md-6 col-lg-8"
+                    control="textarea"
+                    name="description"
+                    label="توضیحات"
+                    placeholder="توضیحات"
+                />
+                <FormikControl
+                    className="col-md-6 col-lg-8"
+                    control="file"
+                    name="image"
+                    label="تصویر"
+                    placeholder="تصویر"
+                />
+                <div className="col-12 col-md-6 col-lg-8 row justify-content-center">
+                    <div className="col-12 col-md-4 col-lg-3 mx-lg-5">
+                    <FormikControl
+                        control="switch"
+                        name="is_active"
+                        label="وضعیت فعال"
+                    />
                     </div>
+                    <div className="col-12 col-md-4 col-lg-3 mx-lg-5">
+                    <FormikControl
+                        control="switch"
+                        name="show_in_menu"
+                        label="نمایش در منو"
+                    />
+                    </div>
+                </div>
+                <div className="btn_box text-center col-12 col-md-6 col-lg-8 mt-4">
+                    <button type="submit" className="btn btn-primary ">
+                    ذخیره
+                    </button>
+                </div>
+                </div>
             </div>
+            </Form>
+            </Formik>
             
         </ModalContainers>
         </>
-       
+
     );
 }
 
