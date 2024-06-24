@@ -22,11 +22,9 @@ const CategoryTable = () => {
         const res = await getCategoryService(params.categoryId)
         if(res.status == 200){
             setData(res.data.data)
-        }else{
-            Alert("متاسفم...!" , res.data.message , "error")
         }
     } catch (error) {
-        Alert("مشکل" , "مشکل از سمت سرور" , "error")
+        console.log(error);
     }
 
     }
