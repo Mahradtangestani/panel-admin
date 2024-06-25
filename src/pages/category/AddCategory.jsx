@@ -3,7 +3,7 @@ import ModalContainers from '../../components/ModalsContainers';
 import * as Yup from "yup"
 import { Form, Formik } from 'formik';
 import FormikControl from '../../components/form/FormikControl';
-import { getCategoryService } from '../../services/category';
+import { createNewCategoryService, getCategoryService } from '../../services/category';
 import { Alert } from '../../utils/Alert';
 
 
@@ -17,15 +17,31 @@ const initialValues = {
 
 }
 
-const onSubmit = (values , Actions)=>{
-    console.log(values);
+const onSubmit = async (values , actions , setForceRender)=>{
+    try {
+    values = {
+        ...values , 
+        is_active: values.is_active ? 1 : 0,
+        show_in_menu: values.show_in_menu ? 1 : 0
+    }
+    const res = await createNewCategoryService(values)
+    console.log(res);
+    if(res.status == 201){
+        Alert("رکورد ثبت شد" , res.data.message , "success")
+        actions.resetForm()
+        setForceRender(last=>last+1)
+    }
+    } catch (error) {
+        console.log(error.message);
+    }
+    
 }
 
 
 const validationSchema = Yup.object({
     parent_id: Yup.number(),
-    title:Yup.string().required("لطفا این قسمت را پر کنید").matches(/^[a-zA-Z0-9\u0600-\u06FF\u0660-\u0669\u06F0-\u06F9]+$/),
-    description: Yup.string().matches(/^[a-zA-Z0-9\u0600-\u06FF\u0660-\u0669\u06F0-\u06F9]+$/),
+    title:Yup.string().required("لطفا این قسمت را پر کنید").matches(/^[a-zA-Z\u0600-\u06FF0-9\s]+$/),
+    description: Yup.string().matches(/^[a-zA-Z\u0600-\u06FF0-9\s]+$/),
     image:Yup.mixed().test("FileSize" , "حجم فایل نمیتواند بیشتر از 500 کیلوبایت باشد" , (value) => !value ? true : (value.size <= 500 * 1024))
     .test("Format" , "فرمت باید JPG باشد" , (value)=> !value ? true : (value.type === "image/jpeg")),
     is_active: Yup.boolean(),
@@ -34,7 +50,7 @@ const validationSchema = Yup.object({
 
 
 
-const AddCategory = () => {
+const AddCategory = ({setForceRender}) => {
 
     const [parents , setParents] = useState([])
     
@@ -71,7 +87,7 @@ const AddCategory = () => {
 
             <Formik
             initialValues={initialValues}
-            onSubmit={onSubmit}
+            onSubmit={(values , actions)=>onSubmit(values , actions , setForceRender)}
             validationSchema={validationSchema}
             
             >
