@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import AddCategory from '../pages/category/AddCategory';
+import SpinnerLoad from './SpinnerLoad';
 
 
 
-const PaginatedTable = ({children, data , dataInfo , additionalField , numOfPage , searchParams}) => {
+const PaginatedTable = ({children, data , dataInfo , additionalField , numOfPage , searchParams , loading}) => {
 
     const [initData , setInitData] = useState(data)  
 
@@ -49,7 +50,10 @@ const PaginatedTable = ({children, data , dataInfo , additionalField , numOfPage
                     {/* <AddCategory/> */}
                 </div>
             </div>
-        <table className="table table-responsive text-center table-hover table-bordered">
+            { loading ? (
+              <SpinnerLoad clorClass={"text-primary"}/>
+            ) : data.length ? (
+                <table className="table table-responsive text-center table-hover table-bordered">
                 <thead className="table-secondary">
                     <tr>
                         {dataInfo.map(i=>(
@@ -77,6 +81,10 @@ const PaginatedTable = ({children, data , dataInfo , additionalField , numOfPage
                     ))}
                 </tbody>
             </table>
+              ) : (
+                <h5 className='text-center text-danger my-5'></h5>
+              )
+            }
             {pages.length ? (
                 <nav aria-label="Page navigation example" className="d-flex justify-content-center">
                     <ul className="pagination dir_ltr">

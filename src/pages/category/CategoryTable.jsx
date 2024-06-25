@@ -4,19 +4,19 @@ import AddCategory from './AddCategory';
 import { getCategoryService } from '../../services/category';
 import ShowInMenu from './tableAdditions/ShowInMenu';
 import Actions from './tableAdditions/Actions';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { convertdateToJalali } from '../../utils/convertDate';
 
 
 
 const CategoryTable = () => {
     const params = useParams()
-    const location = useLocation()
     const [data , setData] = useState([])
+    const [loading , setLoading] = useState(false)
     const [forceRender , setForceRender] = useState(0)
 
     const handleGetCategories = async ()=>{
-
+    setLoading(true)
     try {
         const res = await getCategoryService(params.categoryId)
         if(res.status == 200){
@@ -24,6 +24,8 @@ const CategoryTable = () => {
         }
     } catch (error) {
         console.log(error);
+    }finally{
+        setLoading(false)
     }
 
     }
@@ -66,13 +68,11 @@ const CategoryTable = () => {
     return (
         <>  
         <Outlet/>
-        {data.length ? (
-            <PaginatedTable data={data} dataInfo={dataInfo} additionalField={additionalField} searchParams={searchParams} numOfPage={5}>
+        
+            <PaginatedTable data={data} dataInfo={dataInfo} additionalField={additionalField} searchParams={searchParams} numOfPage={5} loading={loading}>
                 <AddCategory setForceRender={setForceRender}/>
             </PaginatedTable>
-        ) : (
-            <h5 className='text-center text-danger my-5'>هیچ دسته بندی یافت نشد!</h5>
-        )}
+       
         </>  
         ) 
 }

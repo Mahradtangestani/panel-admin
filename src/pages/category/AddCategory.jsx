@@ -5,6 +5,8 @@ import { Form, Formik } from 'formik';
 import FormikControl from '../../components/form/FormikControl';
 import { createNewCategoryService, getCategoryService } from '../../services/category';
 import { Alert } from '../../utils/Alert';
+import SubmitButton from '../../components/form/SubmitButton';
+
 
 
 const initialValues = {
@@ -145,9 +147,7 @@ const AddCategory = ({setForceRender}) => {
                     </div>
                 </div>
                 <div className="btn_box text-center col-12 col-md-6 col-lg-8 mt-4">
-                    <button type="submit" className="btn btn-primary ">
-                    ذخیره
-                    </button>
+                    <SubmitButton/>
                 </div>
                 </div>
             </div>
