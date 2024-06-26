@@ -6,6 +6,7 @@ import FormikControl from '../../components/form/FormikControl';
 import { createNewCategoryService, getCategoryService } from '../../services/category';
 import { Alert } from '../../utils/Alert';
 import SubmitButton from '../../components/form/SubmitButton';
+import { useParams } from 'react-router-dom';
 
 
 
@@ -53,8 +54,9 @@ const validationSchema = Yup.object({
 
 
 const AddCategory = ({setForceRender}) => {
-
+    const params = useParams()
     const [parents , setParents] = useState([])
+    const [reInitialValues , setReInitialValues] = useState(null)
     
     const handleGetParentsCategories = async ()=>{
         
@@ -75,6 +77,18 @@ const AddCategory = ({setForceRender}) => {
         handleGetParentsCategories()
     } , [])
 
+
+    useEffect(()=>{
+    if(params.categoryId){
+        setReInitialValues({
+            ...initialValues ,
+            parent_id : params.categoryId
+        })
+    }else{
+        setReInitialValues(null)
+    }
+    } , [params.categoryId])
+
     return (
         <>
             <button className="btn btn-success d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#add_product_category_modal">
@@ -88,9 +102,10 @@ const AddCategory = ({setForceRender}) => {
         >
 
             <Formik
-            initialValues={initialValues}
+            initialValues={reInitialValues || initialValues}
             onSubmit={(values , actions)=>onSubmit(values , actions , setForceRender)}
             validationSchema={validationSchema}
+            enableReinitialize
             
             >
             <Form>
