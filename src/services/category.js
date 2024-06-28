@@ -23,6 +23,15 @@ export const createNewCategoryService = (data)=>{
 }
 
 
+export const getSingleCategoryService = (id)=>{
+    return httpService(`/admin/categories/${id}` , "get")
+}
+
+
+export const editCategoryService = (id, data)=>{
+    return httpService(`/admin/categories/${id}`, 'put', data);
+}
+
 
 
 

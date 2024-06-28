@@ -2,16 +2,16 @@ import { createContext, useState } from "react";
 
 export const CategoryContext = createContext({
     editId : null,
-    SetEditId : ()=>{}
+    setEditId : ()=>{}
 })
 
 
 const CategoryContextContainer = ({children})=>{
-        const [editId , SetEditId] = useState(null)
+        const [editId , setEditId] = useState(null)
         return (
             <CategoryContext.Provider value={{
                 editId,
-                SetEditId
+                setEditId
             }}>
 
                 {children}
