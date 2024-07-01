@@ -18,6 +18,7 @@ import ManageDelivery from './managedelivery/ManageDelivery';
 import ManageOrders from './manageorders/ManageOrders';
 import Logout from './auth/Logout';
 import Categorychildren from './category/Categorychildren';
+import AddAttributes from './category/attrs/AddAttributes';
 
 
 const Content = () => {
@@ -31,6 +32,7 @@ const Content = () => {
                 <Route path='/categories' element={<Category/>}>
                     <Route path=':categoryId' element={<Categorychildren/>}/>
                 </Route>
+                <Route path='/categories/:categoryId/attributes' element={<AddAttributes/>}/>
                 <Route path='/products' element={<Product/>}/>
                 <Route path='/colors' element={<Colors/>}/>
                 <Route path='/guarantee' element={<Guarantee/>}/>
