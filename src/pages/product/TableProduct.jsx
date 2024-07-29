@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import PaginatedDataTable from "../../components/PaginatedDataTable";
-import { getProductsService } from "../../services/products";
+import { deleteProductService, getProductsService } from "../../services/products";
 import AddProduct from "./AddProduct";
-import Actions from "../category/tableAdditions/Actions";
+import { Alert, Confirm } from "../../utils/Alert";
+import Actions from "./tableAddition/Actions";
 
 
 const TableProduct = () => {
@@ -11,7 +12,7 @@ const TableProduct = () => {
   const [loading, setLoading] = useState(false);
   const [searchChar, setSearchChar] = useState("") 
   const [currentPage, setCurrentPage] = useState(1) // صفحه حال حاضر
-  const [countOnPage, setCountOnPage] = useState(3) // تعداد محصول در هر صفحه
+  const [countOnPage, setCountOnPage] = useState(1) // تعداد محصول در هر صفحه
   const [pageCount, setPageCount] = useState(0) // تعداد کل صفحات
 
   const dataInfo = [
@@ -27,7 +28,7 @@ const TableProduct = () => {
     {
       field: null,
       title: "عملیات",
-      elements: (rowData) => <Actions rowData={rowData}/>,
+      elements: (rowData) => <Actions rowData={rowData} handleDeleteProduct={handleDeleteProduct}/>,
     },
   ];
   const searchParams = {
@@ -44,6 +45,18 @@ const TableProduct = () => {
       setPageCount(res.data.last_page)
     }
   }
+  
+  
+  const handleDeleteProduct = async (product)=>{
+    if (await Confirm("حذف محصول",`آیا از حذف ${product.title} اطمینان دارید؟`)) {
+      const res = await deleteProductService(product.id);
+      if (res.status === 200) {
+        Alert("انجام شد", res.data.message, "success");
+        handleGetProducts(currentPage, countOnPage, searchChar)
+      }
+    }
+  }
+
 
   const handleSearch = (char)=>{
     setSearchChar(char)
