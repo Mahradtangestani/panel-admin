@@ -1,20 +1,11 @@
 import React from 'react';
-import ModalContainers from '../../components/ModalsContainers';
-
 
 const AddProduct = () => {
     return (
         <>
-        <button className="btn btn-success d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#add_product_modal">
-                        <i className="fas fa-plus text-light"></i>
-        </button>
-
-        <ModalContainers
-        fullScreen={true}
-        id="add_product_modal"
-        title="افزودن محصول جدید"
-        >
+        
             <div className="container">
+                <h4 className='text-center my-3'>افزودن محصول جدید</h4>
                     <div className="row justify-content-center">
                         <div className="col-12 col-md-6 col-lg-8">
                             <div className="input-group mb-2 dir_ltr">
@@ -152,10 +143,9 @@ const AddProduct = () => {
 
                     </div>
             </div>
-            
-        </ModalContainers>
+    
         </>
-    );
+    )
 }
 
 export default AddProduct;

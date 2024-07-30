@@ -3,7 +3,7 @@ import Category from './category/Category';
 import Dashboard from './dashboard/Dashboard';
 import { AdminContext } from '../context/AdminContext';
 import Product from './product/Product';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Router, Routes } from 'react-router-dom';
 import Colors from './colors/Colors';
 import Guarantee from './guarantee/Guarantee';
 import Brands from './brands/Brands';
@@ -19,6 +19,7 @@ import ManageOrders from './manageorders/ManageOrders';
 import Logout from './auth/Logout';
 import Categorychildren from './category/Categorychildren';
 import Attributes from './category/attrs/Attributes';
+import AddProduct from './product/AddProduct';
 
 
 const Content = () => {
@@ -34,6 +35,7 @@ const Content = () => {
                 </Route>
                 <Route path='/categories/:categoryId/attributes' element={<Attributes/>}/>
                 <Route path='/products' element={<Product/>}/>
+                <Route path="/products/add-product" element={<AddProduct/>}/>
                 <Route path='/colors' element={<Colors/>}/>
                 <Route path='/guarantee' element={<Guarantee/>}/>
                 <Route path='/brands' element={<Brands/>}/>

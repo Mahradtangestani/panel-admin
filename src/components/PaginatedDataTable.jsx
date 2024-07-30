@@ -12,7 +12,7 @@ const PaginatedDataTable = ({
   handleSearch
 }) => {
 
-  const pageRange = 3  
+  const pageRange = 2;  
 
   const [pages, setPages] = useState([]);
 
@@ -22,7 +22,7 @@ const PaginatedDataTable = ({
     clearTimeout(timeout);
     timeout = setTimeout(()=>{
       handleSearch(char)
-    },2000)
+    },1000)
   }
 
   useEffect(()=>{
