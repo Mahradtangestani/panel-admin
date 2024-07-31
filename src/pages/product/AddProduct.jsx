@@ -1,20 +1,78 @@
-import React from 'react';
+import { Form, Formik } from 'formik';
+import React, { useEffect, useState } from 'react';
+import { initialValues, Onsubmit, validationSchema } from './core';
+import FormikControl from '../../components/form/FormikControl';
+import { getCategoryService } from '../../services/category';
+import SpinnerLoad from '../../components/SpinnerLoad';
 
 const AddProduct = () => {
+    const [parentCategories , setParentCategories] = useState([])
+    const [mainCategories , setMainCategories] = useState(null)
+
+    const getAllParentCategories = async ()=>{
+        const res = await getCategoryService();
+        if (res.status === 200) {
+            setParentCategories(res.data.data.map(d=>{
+            return {id:d.id, value:d.title}
+          }));
+        }
+      }
+      useEffect(()=>{
+        getAllParentCategories();
+      },[])
+
+      const handleSetMainCategories = async (value)=>{
+        setMainCategories("waiting")
+        if(value > 0){
+        const res = await getCategoryService(value)
+        console.log(res);
+        if(res.status === 200){
+            setMainCategories(res.data.data.map(d=>{
+                return {id:d.id, value:d.title}
+            }))
+        }
+        }else{
+            setMainCategories(null)
+        }
+      }
+
     return (
-        <>
-        
+        <Formik 
+        initialValues={initialValues}
+        onSubmit={(values , actions) => Onsubmit(values , actions)}
+        validationSchema={validationSchema}
+        >
+            <Form>
             <div className="container">
                 <h4 className='text-center my-3'>افزودن محصول جدید</h4>
                     <div className="row justify-content-center">
+                        
+                        {
+                            parentCategories.length > 0 ? (
+                                <FormikControl
+                                className="col-12 col-md-6 col-lg-8"
+                                control="select"
+                                options={parentCategories}
+                                name="parentsCats"
+                                label="دسته والد"
+                                firstItem="دسته مورد نظر را وارد کتید"
+                                handleOnChange={handleSetMainCategories}
+                                />
+                            ) : null
+                        }
+
                         <div className="col-12 col-md-6 col-lg-8">
-                            <div className="input-group mb-2 dir_ltr">
-                                <select type="text" className="form-control">
-                                    <option value="1">انتخاب دسته محصول</option>
-                                    <option value="1">دسته شماره 1</option>
-                                </select>
-                                <span className="input-group-text w_6rem justify-content-center">دسته</span>
-                            </div>
+                        {mainCategories === "waiting" ? (
+                             <SpinnerLoad isSmall={true} colorClass="text-primary"/>
+                           ) : mainCategories != null ? (
+                             <FormikControl
+                               control="select"
+                               options={mainCategories}
+                               name="mainCats"
+                               label="دسته اصلی"
+                               firstItem = "دسته مورد نظر را انتخاب کنبد..."
+                             />
+                             ): null}
                             <div className="col-12 col-md-6 col-lg-8">
                                 <span className="chips_elem">
                                     <i className="fas fa-times text-danger"></i>
@@ -143,8 +201,8 @@ const AddProduct = () => {
 
                     </div>
             </div>
-    
-        </>
+            </Form>
+        </Formik>
     )
 }
 
