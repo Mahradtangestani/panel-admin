@@ -1,13 +1,15 @@
-import { Form, Formik } from 'formik';
+import { ErrorMessage, Form, Formik } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { initialValues, Onsubmit, validationSchema } from './core';
 import FormikControl from '../../components/form/FormikControl';
 import { getCategoryService } from '../../services/category';
 import SpinnerLoad from '../../components/SpinnerLoad';
+import FormikError from '../../components/form/FormikError';
 
 const AddProduct = () => {
     const [parentCategories , setParentCategories] = useState([])
     const [mainCategories , setMainCategories] = useState(null)
+    const [selectedCategory , setSelectedCategory] = useState([])
 
     const getAllParentCategories = async ()=>{
         const res = await getCategoryService();
@@ -34,6 +36,25 @@ const AddProduct = () => {
         }else{
             setMainCategories(null)
         }
+      }
+
+      const handleSelectCategory = (value , formik)=>{
+          setSelectedCategory(oldData=>{
+            if(oldData.findIndex(d=>d.id == value) == -1){
+
+                const newData = [...oldData , mainCategories.filter(c=>c.id == value)[0]]
+
+                const selectedIds = newData.map(nd => nd.id)
+                formik.setFieldValue("category_id" , selectedIds.join("-"))
+
+                return newData;
+
+            }else{
+                return oldData;
+            }
+            
+            
+          })
       }
 
     return (
@@ -71,17 +92,19 @@ const AddProduct = () => {
                                name="mainCats"
                                label="دسته اصلی"
                                firstItem = "دسته مورد نظر را انتخاب کنبد..."
+                               handleOnChange={handleSelectCategory}
                              />
                              ): null}
+                              
+                            <ErrorMessage name={"category_id"} component={FormikError}/>  
+
                             <div className="col-12 col-md-6 col-lg-8">
-                                <span className="chips_elem">
-                                    <i className="fas fa-times text-danger"></i>
-                                    دسته فلان
+                               {selectedCategory.map(c=>(
+                                <span className='chips_elem' key={c.id}>
+                                     <i className='fas fa-time text-danger'></i>
+                                     {c.value}
                                 </span>
-                                <span className="chips_elem">
-                                    <i className="fas fa-times text-danger"></i>
-                                    دسته فلان
-                                </span>
+                               ))}
                             </div>
                         </div>
                         <div className="col-12 col-md-6 col-lg-8">
