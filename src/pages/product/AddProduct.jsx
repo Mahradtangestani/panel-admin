@@ -24,37 +24,32 @@ const AddProduct = () => {
       },[])
 
       const handleSetMainCategories = async (value)=>{
-        setMainCategories("waiting")
-        if(value > 0){
-        const res = await getCategoryService(value)
-        console.log(res);
-        if(res.status === 200){
+        setMainCategories("waiting");
+        if (value > 0) {
+          const res = await getCategoryService(value);
+          if (res.status === 200) {
             setMainCategories(res.data.data.map(d=>{
-                return {id:d.id, value:d.title}
-            }))
-        }
+              return {id:d.id, value:d.title}
+            }));
+          }
         }else{
-            setMainCategories(null)
+          setMainCategories(null);
         }
       }
 
-      const handleSelectCategory = (value , formik)=>{
-          setSelectedCategory(oldData=>{
-            if(oldData.findIndex(d=>d.id == value) == -1){
-
-                const newData = [...oldData , mainCategories.filter(c=>c.id == value)[0]]
-
-                const selectedIds = newData.map(nd => nd.id)
-                formik.setFieldValue("category_id" , selectedIds.join("-"))
-
-                return newData;
-
-            }else{
-                return oldData;
-            }
-            
-            
-          })
+      const handleSelectCategory = (value, formik)=>{
+        setSelectedCategory(oldData=>{
+          if (oldData.findIndex(d=>d.id == value) == -1) {
+            const newData = [...oldData, mainCategories.filter(c=>c.id == value)[0]];
+    
+            const selectedIds = newData.map(nd=>nd.id);
+            formik.setFieldValue("category_id", selectedIds.join("-"));
+    
+            return newData
+          }else{
+            return oldData
+          }
+        })
       }
 
     return (
@@ -101,7 +96,7 @@ const AddProduct = () => {
                             <div className="col-12 col-md-6 col-lg-8">
                                {selectedCategory.map(c=>(
                                 <span className='chips_elem' key={c.id}>
-                                     <i className='fas fa-time text-danger'></i>
+                                     <i className='fas fa-times text-danger'></i>
                                      {c.value}
                                 </span>
                                ))}
