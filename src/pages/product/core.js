@@ -25,7 +25,7 @@ export const Onsubmit = async (values , actions)=>{
 }
 
 export const validationSchema = Yup.object({
-    category_ids: Yup.string()
+    category_id: Yup.string()
         .required("لطفا این قسمت را پر کنید")
         .matches(/^[0-9\s-]+$/,"فقط ازاعداد و خط تیره استفاده شود"),
     title: Yup.string()

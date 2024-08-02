@@ -5,6 +5,7 @@ import FormikControl from '../../components/form/FormikControl';
 import { getCategoryService } from '../../services/category';
 import SpinnerLoad from '../../components/SpinnerLoad';
 import FormikError from '../../components/form/FormikError';
+import PrevPagebutton from '../../components/PrevPagebutton';
 
 const AddProduct = () => {
     const [parentCategories , setParentCategories] = useState([])
@@ -51,6 +52,17 @@ const AddProduct = () => {
           }
         })
       }
+      
+      const handleRemoveSelectedCategory = (categoryId , formik)=>{
+        setSelectedCategory(oldData =>{
+            let newData = oldData.filter(d=>d.id != categoryId)
+      
+            const selectedIds = newData.map(nd=>nd.id);
+            formik.setFieldValue("category_id", selectedIds.join("-"));
+      
+            return newData
+          });
+      }
 
     return (
         <Formik 
@@ -58,9 +70,14 @@ const AddProduct = () => {
         onSubmit={(values , actions) => Onsubmit(values , actions)}
         validationSchema={validationSchema}
         >
-            <Form>
+            {formik=>{
+                return (
+                    <Form>
             <div className="container">
                 <h4 className='text-center my-3'>افزودن محصول جدید</h4>
+                <div className='text-left col-md-6 col-lg-8 m-auto my-3'>
+                    <PrevPagebutton/>
+                </div>
                     <div className="row justify-content-center">
                         
                         {
@@ -91,13 +108,13 @@ const AddProduct = () => {
                              />
                              ): null}
                               
-                            <ErrorMessage name={"category_id"} component={FormikError}/>  
+                            <ErrorMessage name="category_id" component={FormikError}/>  
 
                             <div className="col-12 col-md-6 col-lg-8">
-                               {selectedCategory.map(c=>(
-                                <span className='chips_elem' key={c.id}>
-                                     <i className='fas fa-times text-danger'></i>
-                                     {c.value}
+                               {selectedCategory.map(category=>(
+                                <span className='chips_elem' key={category.id}>
+                                     <i className='fas fa-times text-danger' onClick={()=>handleRemoveSelectedCategory(category.id , formik)}></i>
+                                     {category.value}
                                 </span>
                                ))}
                             </div>
@@ -220,6 +237,8 @@ const AddProduct = () => {
                     </div>
             </div>
             </Form>
+                )
+            }}
         </Formik>
     )
 }
