@@ -6,6 +6,7 @@ import AddProduct from "./AddProduct";
 import { Alert, Confirm } from "../../utils/Alert";
 import Actions from "./tableAddition/Actions";
 import { Link } from "react-router-dom";
+import AddButtonLink from "../../components/form/AddButtonLink";
 
 
 const TableProduct = () => {
@@ -79,12 +80,7 @@ const TableProduct = () => {
     pageCount={pageCount}
     handleSearch={handleSearch}
     >
-      {/* <AddProduct/> */}
-      <Link to={"/products/add-product"}>
-         <span className="btn btn-success d-flex justify-content-center align-items-center">
-             <i className="fas fa-plus text-light"></i>
-         </span>
-      </Link>
+      <AddButtonLink href={"/products/add-product"}/>
     </PaginatedDataTable>
   );
 };
