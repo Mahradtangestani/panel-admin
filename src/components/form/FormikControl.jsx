@@ -1,5 +1,6 @@
 import File from "./File"
 import Input from "./Input"
+import MultiSelect from "./MultiSelect"
 import Select from "./Select"
 import Switch from "./Switch"
 import Textarea from "./Textarea"
@@ -8,6 +9,8 @@ const FormikControl = (props)=>{
     switch (props.control) {
         case 'select':
             return <Select {...props}/>
+        case 'multiSelect':
+            return <MultiSelect {...props}/>
         case 'input':
             return <Input {...props}/>
         case 'textarea':

@@ -1,28 +1,29 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import PaginatedDataTable from "../../components/PaginatedDataTable";
 import { deleteProductService, getProductsService } from "../../services/products";
-import AddProduct from "./AddProduct";
-import { Alert, Confirm } from "../../utils/Alert";
 import Actions from "./tableAddition/Actions";
-import { Link } from "react-router-dom";
 import AddButtonLink from "../../components/form/AddButtonLink";
-
+import { Alert, Confirm } from "../../utils/Alert";
 
 const TableProduct = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchChar, setSearchChar] = useState("") 
   const [currentPage, setCurrentPage] = useState(1) // صفحه حال حاضر
-  const [countOnPage, setCountOnPage] = useState(1) // تعداد محصول در هر صفحه
+  const [countOnPage, setCountOnPage] = useState(10) // تعداد محصول در هر صفحه
   const [pageCount, setPageCount] = useState(0) // تعداد کل صفحات
-
+  
+  {console.log(data);
+  }
   const dataInfo = [
     { field: "id", title: "#" },
     {
       field: null,
       title: "گروه محصول",
-      elements: (rowData) => rowData.categories[0].title,
+      elements: (rowData) => rowData.title,
     },
     { field: "title", title: "عنوان" },
     { field: "price", title: "قیمت" },
@@ -47,8 +48,12 @@ const TableProduct = () => {
       setPageCount(res.data.last_page)
     }
   }
-  
-  
+
+  const handleSearch = (char)=>{
+    setSearchChar(char)
+    handleGetProducts(1, countOnPage, char)
+  }
+
   const handleDeleteProduct = async (product)=>{
     if (await Confirm("حذف محصول",`آیا از حذف ${product.title} اطمینان دارید؟`)) {
       const res = await deleteProductService(product.id);
@@ -57,12 +62,6 @@ const TableProduct = () => {
         handleGetProducts(currentPage, countOnPage, searchChar)
       }
     }
-  }
-
-
-  const handleSearch = (char)=>{
-    setSearchChar(char)
-    handleGetProducts(1, countOnPage, char)
   }
 
   useEffect(()=>{
