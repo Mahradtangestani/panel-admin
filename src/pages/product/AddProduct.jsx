@@ -71,7 +71,7 @@ const AddProduct = () => {
                 ) : mainCategories != null ? (
                   <FormikControl
                     className="col-md-6 col-lg-8"
-                    control="multiSelect"
+                    control="searchableSelect"
                     options={mainCategories}
                     name="category_id"
                     label="دسته اصلی"
