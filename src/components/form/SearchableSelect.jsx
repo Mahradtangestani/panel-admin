@@ -11,6 +11,13 @@ const SearchableSelect = ({resultType, options, name, label, className, firstIte
   const [showItems, setShowItems] = useState(false);
   const [copyOptions , setCopyOptions]=useState(options);
 
+
+  useEffect(()=>{
+     document.querySelector("body").addEventListener("click" , ()=>{
+        setShowItems(false)
+     })
+  } , [])
+
   const handleSelectItems = (selectedId, formik)=>{
     if (selectedItems.findIndex(d=>d.id == selectedId) == -1 && selectedId > 0) {
 
@@ -41,7 +48,10 @@ const SearchableSelect = ({resultType, options, name, label, className, firstIte
         {({form})=>{
             return (
                 <div className={`col-12 ${className}`}>            
-                    <div className="input-group mb-3 dir_ltr pointer" onClick={()=>setShowItems(!showItems)}>
+                    <div className="input-group mb-3 dir_ltr pointer" onClick={(e)=>{
+                        e.stopPropagation()
+                        setShowItems(!showItems)
+                    }}>
                         <div className="form-control" id={name + "-select"}>
                             {selectedItems.length > 0 ? 
                                 selectedItems.map((selectedItem) => (
