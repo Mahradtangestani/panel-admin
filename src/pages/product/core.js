@@ -1,8 +1,10 @@
 import * as Yup from "yup"
+import { createNewProductServices } from "../../services/products";
+import { Alert } from "../../utils/Alert";
 
 
 export const initialValues = {
-    category_id:"",
+    category_ids:"",
     title:"",
     price:"",
     weight: null,
@@ -20,12 +22,15 @@ export const initialValues = {
 
 }
 
-export const Onsubmit = async (values , actions)=>{
-
-}
+export const onSubmit = async (values, actions) => {
+  const res = await createNewProductServices(values);
+  if (res.status === 201) {
+    Alert('انجام شد', res.data.message, 'success')
+  }
+};
 
 export const validationSchema = Yup.object({
-    category_id: Yup.string()
+    category_ids: Yup.string()
         .required("لطفا این قسمت را پر کنید")
         .matches(/^[0-9\s-]+$/,"فقط ازاعداد و خط تیره استفاده شود"),
     title: Yup.string()
